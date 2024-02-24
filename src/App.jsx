@@ -26,9 +26,7 @@ export const App = () => {
   };
 
   const buttonClick = () => {
-    setPage((prev) => ({
-      page: prev + 1,
-    }));
+    setPage((prev) => prev + 1);
   };
 
   const itemClick = (e) => {
@@ -36,8 +34,8 @@ export const App = () => {
     setIsActive(true);
   };
 
-  const modalToggle = () => {
-    setIsActive((prev) => ({ isActive: !prev }));
+  const modalClose = () => {
+    setIsActive(false);
   };
 
   useEffect(() => {
@@ -46,15 +44,15 @@ export const App = () => {
         setLoading(true);
 
         const data = await getAPI(search, page);
-        console.log(data.hits);
+
         if (data.hits.length < 1) {
           setIsEmpty(true);
         }
-        setData((prev) => ({ data: [...prev, ...data.hits] }));
+
+        setData((prev) => [...prev, ...data.hits]);
         setTotalPages(Math.ceil(data.totalHits / 12));
         setIsEmpty(false);
       } catch (error) {
-        console.log("error", error);
       } finally {
         setLoading(false);
       }
@@ -68,7 +66,7 @@ export const App = () => {
     <div className="container">
       <Form submitForm={submitForm} />
 
-      {isActive && <Modal img={imgLarge} modalToggle={modalToggle} />}
+      {isActive && <Modal img={imgLarge} modalClose={modalClose} />}
 
       {isEmpty && (
         <p className="notification">
@@ -76,9 +74,9 @@ export const App = () => {
           value😞
         </p>
       )}
-      {data.length !== 0 && <Render data={data} click={itemClick} />}
+      {data.length > 0 && <Render data={data} click={itemClick} />}
       {loading && <Loader />}
-      {data.length > 0 && totalPages > page && <Button click={buttonClick} />}
+      {totalPages > page && <Button click={buttonClick} />}
     </div>
   );
 };

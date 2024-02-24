@@ -3,28 +3,24 @@ import React, { Component, useEffect } from "react";
 const Modal = (props) => {
   const handleClickESC = (e) => {
     if (e.code === "Escape") {
-      props.modalToggle();
+      console.log("Escape");
+      props.modalClose();
     }
   };
 
   const modalClose = (e) => {
     if (e.target.getAttribute("class") === "overlay") {
-      props.modalToggle();
+      props.modalClose();
     }
   };
 
   useEffect(() => {
+    console.log("ESChand");
     document.addEventListener("keydown", handleClickESC);
-    return document.removeEventListener("keydown", handleClickESC);
+    return () => {
+      document.removeEventListener("keydown", handleClickESC);
+    };
   }, []);
-
-  // componentDidMount() {
-  //   document.addEventListener("keydown", handleClickESC);
-  // }
-
-  // componentWillUnmount() {
-  //   document.removeEventListener("keydown", handleClickESC);
-  // }
 
   return (
     <div className="overlay" onClick={modalClose}>
