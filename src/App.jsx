@@ -47,12 +47,14 @@ export const App = () => {
 
         if (data.hits.length < 1) {
           setIsEmpty(true);
+          return;
         }
 
         setData((prev) => [...prev, ...data.hits]);
         setTotalPages(Math.ceil(data.totalHits / 12));
         setIsEmpty(false);
       } catch (error) {
+        console.log(error);
       } finally {
         setLoading(false);
       }
