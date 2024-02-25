@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 import Button from "./components/Button";
@@ -39,7 +39,7 @@ export const App = () => {
   };
 
   useEffect(() => {
-    async function getAPI() {
+    async function getttingAPI() {
       try {
         setLoading(true);
 
@@ -60,7 +60,7 @@ export const App = () => {
       }
     }
     if (search.length > 0) {
-      getAPI();
+      getttingAPI();
     }
   }, [search, page]);
 

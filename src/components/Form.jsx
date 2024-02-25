@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import { useState } from "react";
 
 const Form = ({ submitForm }) => {
   const [inputText, setInputText] = useState("");

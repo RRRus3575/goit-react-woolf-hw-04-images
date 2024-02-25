@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import { useEffect } from "react";
 
 const Modal = ({ modalClosed, img }) => {
   const modalClose = (e) => {

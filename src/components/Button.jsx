@@ -1,6 +1,6 @@
-const Button = (props) => {
+const Button = ({ click }) => {
   return (
-    <button onClick={props.click} className="Button">
+    <button onClick={click} className="Button">
       Load More
     </button>
   );
