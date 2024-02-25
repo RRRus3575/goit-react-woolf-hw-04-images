@@ -39,7 +39,7 @@ export const App = () => {
   };
 
   useEffect(() => {
-    async function APIget() {
+    async function getAPI() {
       try {
         setLoading(true);
 
@@ -60,7 +60,7 @@ export const App = () => {
       }
     }
     if (search.length > 0) {
-      APIget();
+      getAPI();
     }
   }, [search, page]);
 
@@ -68,7 +68,7 @@ export const App = () => {
     <div className="container">
       <Form submitForm={submitForm} />
 
-      {isActive && <Modal img={imgLarge} modalClose={modalClose} />}
+      {isActive && <Modal img={imgLarge} modalClosed={modalClose} />}
 
       {isEmpty && (
         <p className="notification">

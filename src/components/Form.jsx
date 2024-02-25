@@ -1,12 +1,12 @@
 import React, { Component, useState } from "react";
 
-const Form = (props) => {
+const Form = ({ submitForm }) => {
   const [inputText, setInputText] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    props.submitForm(inputText);
+    submitForm(inputText);
   };
 
   const handleChange = (e) => {
